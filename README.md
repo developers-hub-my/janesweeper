@@ -3,7 +3,7 @@
 Keeps disk usage under a target (default 60%) by cleaning caches, build output and old downloads on a schedule.
 Anything removed goes to **quarantine first** and can be restored until it is purged.
 
-By **Developers Hub Sdn Bhd** · https://devhub.my · https://janesweeper.netlify.app
+By **Developers Hub Sdn Bhd** · https://devhub.my · https://janesweeper.g8deck.com
 
 This repo holds the compiled downloads only. Get them from **[Releases](https://github.com/developers-hub-my/janesweeper/releases/latest)**.
 
