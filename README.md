@@ -11,7 +11,7 @@ This repo holds the compiled downloads only. Get them from **[Releases](https://
 
 | File | For |
 |---|---|
-| `JaneSweeper-<ver>-macos-universal.zip` | macOS desktop app (Apple Silicon + Intel). Install the CLI too |
+| `JaneSweeper-<ver>-macos-universal.zip` | macOS desktop app (Apple Silicon + Intel). `jsweep` is included |
 | `jsweep-<ver>-darwin-arm64` | CLI, macOS Apple Silicon |
 | `jsweep-<ver>-darwin-amd64` | CLI, macOS Intel |
 | `jsweep-<ver>-linux-amd64` | CLI, Linux x86-64 servers |
@@ -48,10 +48,12 @@ Check a download: `shasum -a 256 -c SHA256SUMS --ignore-missing`.
 
 ## Install the desktop app (macOS)
 
-1. Install the CLI first (above). The app runs `jsweep` for every action.
-2. Unzip `JaneSweeper-<ver>-macos-universal.zip` and move `JaneSweeper.app` to `/Applications`.
-3. The app is not signed yet, so the first time: right-click it, choose **Open**, then **Open** again.
+1. Unzip `JaneSweeper-<ver>-macos-universal.zip` and move `JaneSweeper.app` to `/Applications`.
+   The app carries its own `jsweep`, so nothing else is needed. On first launch it writes the starter config.
+2. The app is not signed yet, so the first time: right-click it, choose **Open**, then **Open** again.
    Or run `xattr -dr com.apple.quarantine /Applications/JaneSweeper.app`.
+3. Want `jsweep` in the terminal too? Install the CLI as above, or link the bundled one:
+   `sudo ln -s /Applications/JaneSweeper.app/Contents/MacOS/jsweep /usr/local/bin/jsweep`
 
 ## First run
 
