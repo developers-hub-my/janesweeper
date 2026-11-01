@@ -21,21 +21,23 @@ This repo holds the compiled downloads only. Get them from **[Releases](https://
 
 | File | For |
 |---|---|
-| `JaneSweeper-<ver>-macos-universal.zip` | macOS desktop app (Apple Silicon + Intel). `jsweep` is included |
+| `JaneSweeper-0.1.0-macos-universal.zip` | macOS desktop app (Apple Silicon + Intel), `jsweep` included. Still 0.1.0: get it from the [v0.1.0 release](https://github.com/developers-hub-my/janesweeper/releases/tag/v0.1.0) |
 | `jsweep-<ver>-darwin-arm64` | CLI, macOS Apple Silicon |
 | `jsweep-<ver>-darwin-amd64` | CLI, macOS Intel |
 | `jsweep-<ver>-linux-amd64` | CLI, Linux x86-64 servers |
 | `jsweep-<ver>-linux-arm64` | CLI, Linux ARM servers |
+| `jsweep-<ver>-windows-amd64.exe` | CLI, Windows x64 (**preview**) |
+| `jsweep-<ver>-windows-arm64.exe` | CLI, Windows ARM64 (**preview**) |
 | `SHA256SUMS` | Checksums |
 
-Windows is not available yet.
+**Windows is a preview.** `scan`, `clean`, quarantine and `restore` work; `jsweep schedule` is not supported yet and says so. It has not been field-tested on Windows, so try `jsweep scan` and `jsweep clean --dry-run` first.
 
 ## Install the CLI
 
 macOS (Apple Silicon shown; use `darwin-amd64` on Intel):
 
 ```sh
-VER=0.1.0
+VER=0.1.1
 curl -fLo jsweep "https://github.com/developers-hub-my/janesweeper/releases/download/v$VER/jsweep-$VER-darwin-arm64"
 chmod +x jsweep
 xattr -d com.apple.quarantine jsweep 2>/dev/null   # binary is not notarised yet
@@ -47,14 +49,26 @@ jsweep doctor
 Linux server:
 
 ```sh
-VER=0.1.0
+VER=0.1.1
 curl -fLo jsweep "https://github.com/developers-hub-my/janesweeper/releases/download/v$VER/jsweep-$VER-linux-amd64"
 sudo install -m 755 jsweep /usr/local/bin/jsweep
 sudo jsweep init --profile server   # server profile is report-only by default
 sudo jsweep doctor
 ```
 
-Check a download: `shasum -a 256 -c SHA256SUMS --ignore-missing`.
+Windows (PowerShell, preview):
+
+```powershell
+$VER = "0.1.1"
+Invoke-WebRequest "https://github.com/developers-hub-my/janesweeper/releases/download/v$VER/jsweep-$VER-windows-amd64.exe" -OutFile jsweep.exe
+.\jsweep.exe init     # cleans nothing
+.\jsweep.exe doctor   # reports the preview status
+.\jsweep.exe scan
+```
+
+SmartScreen may warn because the binary is not code-signed yet (More info → Run anyway).
+
+Check a download: `shasum -a 256 -c SHA256SUMS --ignore-missing` (Windows: `Get-FileHash jsweep.exe -Algorithm SHA256`).
 
 ## Install the desktop app (macOS)
 
