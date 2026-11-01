@@ -7,6 +7,16 @@ By **Developers Hub Sdn Bhd** · https://devhub.my · https://janesweeper.g8deck
 
 This repo holds the compiled downloads only. Get them from **[Releases](https://github.com/developers-hub-my/janesweeper/releases/latest)**.
 
+`jsweep scan` reports what is stale and how big it is; it changes nothing:
+
+![jsweep scan listing stale node_modules and vendor folders with idle days and estimated size](docs/jsweep-scan.png)
+
+`jsweep clean --dry-run` shows the exact plan. Applying it moves the items to quarantine, not to the bin:
+
+![jsweep clean --dry-run showing three folders to quarantine, the size cap and a plan id](docs/jsweep-dry.png)
+
+<sub>Real output from JaneSweeper 0.1.0 (Linux arm64) on a throwaway demo home, not a real machine.</sub>
+
 ## Downloads
 
 | File | For |
